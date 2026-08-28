@@ -24,8 +24,7 @@ should not ship its own copy.
 
 ## A window
 
-Build it lazily, because the widgets are cloned from the game's own menus and those
-have to have existed once:
+Widgets are cloned from the game's own menus and those have to have existed once:
 
 ```csharp
 using BepInEx;
@@ -66,8 +65,7 @@ public class Plugin : BaseUnityPlugin
 ```
 
 That window drags by its heading, resizes from any corner, remembers where the
-player left it, frees the mouse while it is open and closes on Escape. You wrote
-none of that.
+player left it, frees the mouse while it is open and closes on Escape.
 
 `Bar` and `Readout` rows fetch their own values every frame, so there is nothing to
 update. More than one `Tab("name")` instead of `Rows()` gives the window a tab
