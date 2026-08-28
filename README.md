@@ -26,4 +26,6 @@ dotnet build FishyUI.csproj -c Release
 ```
 
 The build deploys the dll straight into the profile's plugin folder. The `demo/`
-project is a local test mod, never shipped.
+project is a local test mod.
+
+AI was used as help for making this so problems are expected with it, until I get a grasp on libs.
