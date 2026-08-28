@@ -1,15 +1,13 @@
 # FishyUI
 
-A window library for How to Fish mods. Windows cloned from the game's real widgets
-at runtime, so whatever a mod builds with it looks like the base game made it.
+A window library for How to Fish mods. Windows cloned from the game's widgets
+at runtime. The library draws nothing on its own.
 
 ```csharp
 var win = Window.Create("Weather", 640f, 600f);
 win.Rows().Slider("Storm strength", cfgStorm).Colour("Sky", cfgSky);
 win.Toggle();
 ```
-
-The library draws nothing on its own. Players install it because a mod asked for it.
 
 ## Documentation
 
@@ -28,4 +26,4 @@ dotnet build FishyUI.csproj -c Release
 The build deploys the dll straight into the profile's plugin folder. The `demo/`
 project is a local test mod.
 
-AI was used as help for making this so problems are expected with it, until I get a grasp on libs.
+AI was used as help for making this so problems are expected with it until I get a grasp on libs.
