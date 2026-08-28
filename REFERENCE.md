@@ -12,7 +12,7 @@ The library draws nothing on its own.
 
 `Window.Create(title, width, height)` or `Window.Create(id, title, width, height)`.
 The id is what its position is saved under. It starts hidden and returns `null` if
-no menu has existed yet, so build windows lazily, on the first key press.
+no menu has existed yet, on the first key press.
 
 | Member | What it does |
 | --- | --- |
@@ -23,9 +23,9 @@ no menu has existed yet, so build windows lazily, on the first key press.
 | `Root` | The whole window, if you need the object itself. |
 | `Id` | What its position is saved under. |
 | `Show()` / `Hide()` / `Toggle()` / `Visible` | Opening and closing. |
-| `OpenWhenReady()` | Opens as soon as the game allows, for a window that should be there from the start. |
+| `OpenWhenReady()` | Opens as soon as the game allows. |
 | `Refresh()` | Rebuild the rows now, for rows added while it is open. |
-| `Destroy()` | Take it away for good. Its saved position is kept. |
+| `Destroy()` | Take it away for good, its saved position is kept. |
 | `Focus()` / `Center()` | Bring to front, or put back in the middle. |
 | `Title` | Change the heading. |
 | `Resizable`, `MinSize` | Whether and how far it can be resized. |
@@ -35,7 +35,7 @@ no menu has existed yet, so build windows lazily, on the first key press.
 | `PanelColour`, `ControlColour` | The colours used when the blur is off. |
 | `Opacity` | How solid the whole window is. |
 
-What a window does without being asked: drags by its heading, resizes from any
+What a window does by itself: drags by its heading, resizes from any
 corner or edge, collapses on a double click, comes to the front when clicked, stays
 on screen, remembers its position, size, collapsed state and which tab you left it
 on (`BepInEx/config/fishyui.windows.cfg`), frees the mouse and holds the player,
@@ -53,11 +53,11 @@ wrong.
 | Row | What it shows |
 | --- | --- |
 | `Header(text)` | A section heading with a line under it. |
-| `Label(text)` | A quiet line of text. |
+| `Label(text)` | A line of text. |
 | `Space(rows)` | A gap. |
 | `Toggle(label, entry)` or `(label, value, onChanged)` | A checkbox. |
 | `Slider(label, entry)` / `(label, entry, min, max)` / `(label, value, min, max, onChanged)` | A slider with a typed value box, `float` or `int`. |
-| `Dropdown(label, enumEntry)` or `(label, options, index, onChanged)` | Opens a real list, scrolling past eight options. |
+| `Dropdown(label, enumEntry)` or `(label, options, index, onChanged)` | Opens a list, scrolling past eight options. |
 | `Input(label, entry)` or `(label, value, onChanged)` | A text box. |
 | `Colour(label, entry)` or `(label, value, onChanged)` | Opens a picker fed by the game's own palette. |
 | `Keybind(label, entry)` | Click, press a key. Esc cancels, Backspace clears. `KeyboardShortcut` or `KeyCode`. |
@@ -125,6 +125,5 @@ void BuildUI() => MakeMyWindow();
   they came from is gone, so building UI mid game is fine.
 - Build windows lazily rather than in `Awake`, `Native.Ready` says when.
 - Controllers walk between the controls once the player pushes a stick or an arrow.
-- When a built in piece is not enough you drop down a layer, not out of the
-  library: rows sit on `Native`, `Native` sits on plain cells, and every widget you
-  get back is a real Unity object.
+- When a built in piece is not enough you drop down a layer: rows sit on `Native`, `Native` sits on plain cells,
+  and every widget you get back is a real Unity object.
